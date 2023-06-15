@@ -6,14 +6,14 @@ const {CombineJsonPlayers, getPlayerfromTeamInfo, addSalaryToPlayerObjects, getP
 const data = require('./data/teamKeys.json'); // object that has, team: jsonfile team
 const playersKeys = require("./data/playerKeys.json") // object that has, nbaId : jsonfile player
 const {getTeamDataFromMiami} = require("./team")
-
+require('dotenv').config();
 const app = express();
 app.use(cors()); // Enable CORS
 app.use(express.json());
+const PORT = 8000;
 
-
-app.listen(8000, () => {
-  console.log('Connected to the database and listening on port 8000');
+app.listen(process.env.PORT || PORT, () => {
+  console.log('Connected to backend');
 });
 
 const underReviewFilePath = path.join(__dirname,"data", 'underReview.json');
